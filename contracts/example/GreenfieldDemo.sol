@@ -90,8 +90,27 @@ contract GreenfieldDemo {
         IPermissionHub(PERMISSION_HUB).createPolicy{ value: msg.value }(createPolicyData,_extraData); 
     }
 
-    uint8 public constant RESOURCE_BUCKET = 0x04;
-    uint8 public constant PERMISSION_CHANNEL = 0x07;
+    // @bnb-chain/greenfield-contracts/contracts/Config.sol
+    int8 public constant TRANSFER_IN_CHANNEL_ID = 0x01;
+    uint8 public constant TRANSFER_OUT_CHANNEL_ID = 0x02;
+    uint8 public constant GOV_CHANNEL_ID = 0x03;
+    uint8 public constant BUCKET_CHANNEL_ID = 0x04;
+    uint8 public constant OBJECT_CHANNEL_ID = 0x05;
+    uint8 public constant GROUP_CHANNEL_ID = 0x06;
+    uint8 public constant PERMISSION_CHANNEL_ID = 0x07;
+    uint8 public constant MULTI_MESSAGE_CHANNEL_ID = 0x08;
+    uint8 public constant GNFD_EXECUTOR_CHANNEL_ID = 0x09;
+
+    //  @bnb-chain/greenfield-contracts/contracts/middle-layer/resource-mirror/storage/CmnStorage.sol
+    uint32 public constant STATUS_SUCCESS = 0;
+    uint32 public constant STATUS_FAILED = 1;
+    uint32 public constant STATUS_UNEXPECTED = 2;
+
+    // operation type
+    uint8 public constant TYPE_MIRROR = 1;
+    uint8 public constant TYPE_CREATE = 2;
+    uint8 public constant TYPE_DELETE = 3;
+    uint8 public constant TYPE_MULTI_MESSAGE = 4;
     function greenfieldCall(
         uint32 status,
         uint8 resourceType,
